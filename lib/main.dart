@@ -1,3 +1,4 @@
+import 'package:alertdialog/alertdialog/alert_design2.dart';
 import 'package:alertdialog/alertdialog/alertdialog.dart';
 import 'package:alertdialog/tabbar/nav_page_provider.dart';
 import 'package:alertdialog/tabbar/tabs.dart';
@@ -26,8 +27,9 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
             visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
+          home: AlertDesingDialog(),
           //home: AlertPage(),
-          home: MyTabBarPage(),
+          //home: MyTabBarPage(),
         
       ),
     );

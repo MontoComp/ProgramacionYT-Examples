@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
+import 'dart:math';
 
 class AnimatedPage extends StatefulWidget {
   AnimatedPage({Key key}) : super(key: key);
@@ -12,7 +12,10 @@ class _AnimatedPageState extends State<AnimatedPage>
     with SingleTickerProviderStateMixin {
   AnimationController animationController;
 
-  Animation<double> rotation;
+
+  Animation<double> rotationderecha;
+  Animation<double> rotationizquierda;
+
   @override
   void initState() {
     animationController = AnimationController(
@@ -20,13 +23,25 @@ class _AnimatedPageState extends State<AnimatedPage>
       duration: Duration(milliseconds: 4000),
     );
 
-    rotation =
-        Tween(begin: 0.0, end: 2.0 * math.pi).animate(animationController);
 
+    rotationderecha = Tween(begin: 0.0, end:pi / 4).animate(CurvedAnimation(
+        parent: animationController,
+        curve: Interval(
+          0.0,
+          0.5,
+        )));
+    
+    rotationizquierda =Tween(begin: 0.0,end: -pi/2).animate(CurvedAnimation(
+            parent: animationController,
+            curve: Interval(
+              0.5,
+              1.0,
+            )));
+
+    
     animationController.addListener(() {
       if (animationController.status == AnimationStatus.completed) {
-        //animationController.reverse();
-        animationController.repeat();
+        animationController.reverse();
       }
     });
 
@@ -46,17 +61,19 @@ class _AnimatedPageState extends State<AnimatedPage>
     return AnimatedBuilder(
         animation: animationController,
         child: Center(
-          child: Icon(
-            Icons.warning,
-            color: Color(0xfffbf100),
-            size: 50.0,
+          child: Image.asset(
+            "assets/bell.png",
+            width: 100.0,
+            height: 100.0,
           ),
         ),
         builder: (BuildContext context, Widget childrecib) {
           return Transform.rotate(
-            angle: rotation.value,
-            child: childrecib,
-          );
+              angle: rotationderecha.value,
+              child: Transform.rotate(
+                angle: rotationizquierda.value,
+                child: childrecib,
+              ));
         });
   }
 }
