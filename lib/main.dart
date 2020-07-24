@@ -1,5 +1,6 @@
 import 'package:alertdialog/alertdialog/alert_design2.dart';
 import 'package:alertdialog/alertdialog/alertdialog.dart';
+import 'package:alertdialog/bottomsheet/bottomsheet.dart';
 import 'package:alertdialog/tabbar/nav_page_provider.dart';
 import 'package:alertdialog/tabbar/tabs.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,8 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
             visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
-          home: AlertDesingDialog(),
+          home:BottomSheetPage(),
+          //home: AlertDesingDialog(),
           //home: AlertPage(),
           //home: MyTabBarPage(),
         
