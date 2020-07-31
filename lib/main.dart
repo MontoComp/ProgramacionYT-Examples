@@ -1,10 +1,12 @@
 import 'package:alertdialog/alertdialog/alert_design2.dart';
 import 'package:alertdialog/alertdialog/alertdialog.dart';
 import 'package:alertdialog/bottomsheet/bottomsheet.dart';
+import 'package:alertdialog/text_change/text.dart';
 import 'package:alertdialog/tabbar/nav_page_provider.dart';
 import 'package:alertdialog/tabbar/tabs.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
           providers: [
             ChangeNotifierProvider(
               create:(context)=>NavPage(),
-            )
+            ),
           ],
 
           child: MaterialApp(
@@ -28,11 +30,15 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
             visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
+          initialRoute: 'text',
+          routes: {
+            'text':(BuildContext context)=>TextPage(),
+            'bottom':(BuildContext context)=>BottomSheetPage(),
+            'alert2':(BuildContext context)=>AlertDesingDialog(),
+            'alert1':(BuildContext context)=>AlertPage(),
+            'tab':(BuildContext context)=>MyTabBarPage(),
+          },
           
-          home:BottomSheetPage(),
-          //home: AlertDesingDialog(),
-          //home: AlertPage(),
-          //home: MyTabBarPage(),
         
       ),
     );
